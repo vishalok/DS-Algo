@@ -11,4 +11,4 @@ for(let i = 0; i< row; i++){
         console.log('row', i, 'column', j);
         console.log('Element', twoDArray[i][j]);
     }
-}
+}  
