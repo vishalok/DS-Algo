@@ -56,3 +56,27 @@ var luckyNumbers  = function(matrix) {
 let matrix = [[3,7,8],[9,11,13],[15,16,17]];
 let luckyNums = luckyNumbers(matrix);
 console.log(luckyNums); // Output: [15]
+
+//relevel solution
+var luckyNumbers = function (matrix) {
+ 
+    let myArray = [];
+ 
+    matrix.forEach(col => {
+        myArray.push(Math.max(...col));
+    });
+    let indexOfBiggest = myArray.indexOf(Math.max(...myArray));
+ 
+    let result = [Math.min(...matrix[indexOfBiggest])];
+ 
+    return result;
+};
+ 
+const [m, n] = readline().split(' ');
+let inpArr = [];
+for (let i = 0; i < parseInt(m); i++) {
+	inpArr.push(readline().split(' ').map(item => parseInt(item)));
+ 
+}
+ 
+console.log(luckyNumbers(inpArr));

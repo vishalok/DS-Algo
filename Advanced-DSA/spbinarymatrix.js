@@ -45,7 +45,48 @@ Explanation: (0, 0), (1, 1) and (2, 2) are special positions.
  * @param {*} mat 
  * @returns 
  */
+var numSpecial = function(mat) {
+    let specialPostions = [];
+    for(let i in mat){
+        for(let j in mat[i]){
+            if(mat[i][j] == 1 ){
+                let horizontalOnes = 0;
+                let verticalOnes = 0;
+ 
+                for(let k in mat[i]){
+                    if(k != j &&  mat[i][k] == 1){
+                        horizontalOnes++;
+                    }
+                }
+ 
+                for(let k = 0 ; k < mat.length ; k++ ){
+                    if(k != i && mat[k][j] == 1){
+                        verticalOnes++;
+                    }
+                }
+ 
+                if(horizontalOnes == 0 && verticalOnes == 0){
+                    specialPostions.push([i,j]);
+                }
+ 
+            }
+        }
+    }
+ 
+    return specialPostions.length;
+ 
+};
+ 
+const n = parseInt(readline());
+let inpArr = [];
+for (let i = 0; i < n; i++) {
+	inpArr.push(readline().split(' ').map(item => parseInt(item)));
+ 
+}
+ 
+console.log(numSpecial(inpArr));
 
+/******************* another example / solution*/
 var numSpecial = function(mat) {
     let row = mat.length;
     let col = mat[0].length;
