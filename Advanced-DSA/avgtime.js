@@ -60,4 +60,4 @@ mat.forEach(session => {
 
 let avgTime = Math.floor(result/noOfSessions);
 
-console.log(avgTime);
+console.log(avgTime);   
