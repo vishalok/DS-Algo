@@ -37,22 +37,26 @@ We will be also updating the maxLength, which is storing the max length of subst
 maxLength = maximum of maxLength or index position of current char - windowStart + 1
 Return the percentage of maxLength / input string length.
  */
-const wordStrength = function(s) {
-    let windowsCharsMap = {};
-    let windowStart = 0;
-    let maxLength = 0;
- 
-    for ( let i = 0; i < s.length; i++ ) {
-       const endChar = s[i];
- 
-       if(windowsCharsMap[endChar] >= windowStart) {
-          windowStart = windowsCharsMap[endChar] + 1;
+function calcStrength(string){
+   let charObject = {};
+   let startWindow = 0;
+   let maxLength = 0;
+
+   for(let i = 0; i< string.length; i++){
+       if(charObject[string[i]] >= startWindow){
+           startWindow = charObject[string[i]] + 1;
        }
-       windowsCharsMap[endChar] = i;
-       maxLength = Math.max(maxLength, i - windowStart + 1);
-    }
- 
-    return ((maxLength / s.length) * 100).toFixed(2);
- }
-//TC
- print(wordStrength(readline()))
+       charObject[string[i]] = i;
+       maxLength = Math.max(maxLength, i-startWindow+1);
+   }
+
+   let result =  ((maxLength /string.length)*100).toFixed(2);
+
+   return result;
+
+
+}
+
+// TC - O(n)
+// SC - O(n)
+print(calcStrength(readline()))
